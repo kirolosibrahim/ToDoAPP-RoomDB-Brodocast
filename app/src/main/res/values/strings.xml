@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">ToDoAPP</string>
+    <string name="to_do_app">To Do App</string>
+    <string name="enteranceimage">enteranceimage</string>
+    <string name="todo">ToDo</string>
+    <string name="addtodo">TODO</string>
+    <string name="todobr">TODObtn</string>
+</resources>
