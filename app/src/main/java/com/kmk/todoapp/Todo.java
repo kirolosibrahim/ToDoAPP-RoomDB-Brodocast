@@ -1,25 +1,29 @@
 package com.kmk.todoapp;
 
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
+@Entity(tableName = "todo_table")
 public class Todo {
 
-    String title, body;
-    public Todo(String title, String body) {
-        this.title = title;
-        this.body = body;
+    @PrimaryKey(autoGenerate = true)
+    private int id;
+
+    @ColumnInfo(name = "title")
+    private String title;
+
+    @ColumnInfo(name = "body")
+    private String body;
+
+
+    public int getId() {
+        return id;
     }
 
-    public Todo() {
-
+    public void setId(int id) {
+        this.id = id;
     }
-
-    @Override
-    public String toString() {
-        return "Todo{" +
-                ", title='" + title + '\'' +
-                ", body='" + body + '\'' +
-                '}';
-    }
-
 
     public String getTitle() {
         return title;
@@ -36,4 +40,6 @@ public class Todo {
     public void setBody(String body) {
         this.body = body;
     }
+
+
 }

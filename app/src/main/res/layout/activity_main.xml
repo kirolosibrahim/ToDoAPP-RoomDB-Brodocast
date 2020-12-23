@@ -6,8 +6,35 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swp"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/view"
+        android:layout_marginTop="250dp"
+        android:foregroundGravity="center"
+        app:layout_constraintStart_toStartOf="@+id/view"
+        app:layout_constraintTop_toTopOf="@+id/view" >
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_todolist"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/view"
+            android:layout_marginTop="250dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/et_body"
+            app:layout_constraintVertical_bias="0.0" />
+
+
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
     <EditText
-        android:id="@+id/et_title"
+        android:id="@+id/updatetitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="96dp"
@@ -31,7 +58,7 @@
         android:inputType="textMultiLine"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_title" />
+        app:layout_constraintTop_toBottomOf="@+id/updatetitle" />
 
     <Button
         android:id="@+id/btn_exit"
@@ -70,17 +97,6 @@
         app:rippleColor="#FFFFFF" />
 
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_todolist"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/view"
-        android:layout_marginTop="250dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_body"
-        app:layout_constraintVertical_bias="0.0" />
 
     <View
         android:id="@+id/view"

@@ -18,11 +18,10 @@ public class ToDoAdapter extends RecyclerView.Adapter<ToDoAdapter.ToDoViewHolder
 
 
     List<Todo> todoolist;
-    private Context context;
 
-    public ToDoAdapter(List<Todo> todoolist, Context context) {
+
+    public ToDoAdapter(List<Todo> todoolist) {
         this.todoolist = todoolist;
-        this.context = context;
     }
 
     @NonNull
@@ -33,9 +32,14 @@ public class ToDoAdapter extends RecyclerView.Adapter<ToDoAdapter.ToDoViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull ToDoViewHolder holder, int position) {
+        //Todo todo = getItemId(position);
+
         holder.title.setText(todoolist.get(position).getTitle());
         holder.body.setText(todoolist.get(position).getBody());
+
+
     }
+
 
     @Override
     public int getItemCount() {
@@ -44,7 +48,7 @@ public class ToDoAdapter extends RecyclerView.Adapter<ToDoAdapter.ToDoViewHolder
 
     public class ToDoViewHolder extends RecyclerView.ViewHolder {
 
-        TextView title, body;
+        TextView title, body,id;
 
 
 
