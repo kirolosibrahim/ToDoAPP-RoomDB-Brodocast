@@ -14,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -50,7 +51,6 @@ public class MainActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.rv_todolist);
 
 
-
         todoDatabase = TodoDatabase.getInstance(this);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
@@ -82,19 +82,39 @@ public class MainActivity extends AppCompatActivity {
 
     //Insert Data
     List<Todo> InsertData() {
-       todoDao = todoDatabase.todoDao();
-        Todo todo = new Todo();
+
+        String body = editbody.getText().toString();
+        String title = edittitle.getText().toString();
+
+        if (title.isEmpty() || body.isEmpty()) {
+            Toast.makeText(this, "Title or Body is Empty , Please Enter Data", Toast.LENGTH_SHORT).show();
 
 
-        todo.setBody(editbody.getText().toString());
-        todo.setTitle(edittitle.getText().toString());
-        todoDao.inserttodo(todo);
+        } else {
 
-        editbody.getText().clear();
-        edittitle.getText().clear();
+            todoDao = todoDatabase.todoDao();
+            Todo todo = new Todo();
+
+            todo.setBody(body);
+            todo.setTitle(title);
+            todoDao.inserttodo(todo);
+
+
+            todoDao = todoDatabase.todoDao();
+            todoList = todoDao.getaAlltodo();
+            toDoAdapter = new ToDoAdapter(todoList);
+            recyclerView.setAdapter(toDoAdapter);
+
+
+            editbody.getText().clear();
+            edittitle.getText().clear();
+        }
+
+
+
+
         return todoList;
     }
-
 
 
     //SwipeAction
@@ -108,7 +128,7 @@ public class MainActivity extends AppCompatActivity {
         public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
             int position = viewHolder.getAdapterPosition();
             Todo todo = todoList.get(position);
-            int  id =  todo.getId();
+            int id = todo.getId();
             switch (direction) {
                 //remove Data
                 case ItemTouchHelper.LEFT:
@@ -121,23 +141,21 @@ public class MainActivity extends AppCompatActivity {
                 case ItemTouchHelper.RIGHT:
 
                     AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
-                    View view = LayoutInflater.from(MainActivity.this).inflate(R.layout.customtodoupdate,null);
+                    View view = LayoutInflater.from(MainActivity.this).inflate(R.layout.customtodoupdate, null);
                     alertDialog.setView(view);
                     alertDialog.show();
                     EditText updateTitle = view.findViewById(R.id.updatetitle);
                     EditText updateBody = view.findViewById(R.id.updatebody);
 
 
-
-
                     updateTitle.setText(todoList.get(position).getTitle());
                     updateBody.setText(todoList.get(position).getBody());
 
-                   //Save Button
+                    //Save Button
                     Button save = view.findViewById(R.id.btnsave);
                     save.setOnClickListener(v -> {
 
-                        todoDao.updateById(id ,updateTitle.getText().toString(),updateBody.getText().toString());
+                        todoDao.updateById(id, updateTitle.getText().toString(), updateBody.getText().toString());
 
                         todoDao = todoDatabase.todoDao();
                         todoList = todoDao.getaAlltodo();
@@ -152,8 +170,6 @@ public class MainActivity extends AppCompatActivity {
                     //Cancle button
                     Button cancele = view.findViewById(R.id.btncancle);
                     cancele.setOnClickListener(v -> alertDialog.dismiss());
-
-
 
 
                     todoList.remove(position);
