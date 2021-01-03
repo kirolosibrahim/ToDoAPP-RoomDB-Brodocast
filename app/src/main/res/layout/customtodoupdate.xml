@@ -6,6 +6,7 @@
     android:layout_height="match_parent">
 
 
+
     <EditText
         android:id="@+id/updatetitle"
         android:layout_width="match_parent"
@@ -16,7 +17,7 @@
         android:textColor="@color/purple_500"
         android:textColorHint="#673AB7"
         app:layout_constraintBottom_toTopOf="@+id/updatebody"
-       />
+        android:importantForAutofill="no" />
 
     <EditText
         android:id="@+id/updatebody"
@@ -25,8 +26,25 @@
         android:layout_below="@+id/updatetitle"
         android:ems="10"
 
-      />
-
+        android:autofillHints=""
+         />
+    <Button
+        android:id="@+id/updatenotificationtimepicker"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="16dp"
+        android:layout_centerHorizontal="true"
+        android:autofillHints=""
+        android:drawableBottom="@drawable/ic_baseline_timer_24"
+        android:ems="10"
+        android:hint="Date"
+        android:inputType="date"
+        android:textColor="@color/purple_500"
+        android:textColorHint="#673AB7"
+     />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
@@ -43,7 +61,7 @@
             android:layout_height="wrap_content"
              android:layout_marginRight="10dp"
             android:layout_marginLeft="10dp"
-            android:text="Cancle"
+            android:text="@string/cancle"
             app:layout_constraintEnd_toStartOf="@+id/btnsave"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/updatebody" />
@@ -55,7 +73,7 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_weight="1"
-            android:text="Save"
+            android:text="@string/save"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/btncancle"

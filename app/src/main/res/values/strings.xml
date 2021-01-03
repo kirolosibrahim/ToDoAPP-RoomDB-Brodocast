@@ -5,4 +5,6 @@
     <string name="todo">ToDo</string>
     <string name="addtodo">TODO</string>
     <string name="todobr">TODObtn</string>
+    <string name="cancle">Cancle</string>
+    <string name="save">Save</string>
 </resources>

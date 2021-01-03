@@ -14,7 +14,7 @@
         android:layout_marginTop="250dp"
         android:foregroundGravity="center"
         app:layout_constraintStart_toStartOf="@+id/view"
-        app:layout_constraintTop_toTopOf="@+id/view" >
+        app:layout_constraintTop_toTopOf="@+id/view">
 
 
         <androidx.recyclerview.widget.RecyclerView
@@ -30,13 +30,33 @@
             app:layout_constraintVertical_bias="0.0" />
 
 
-
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+    <Button
+        android:id="@+id/notificationtimepicker"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="16dp"
+
+        android:autofillHints=""
+        android:drawableBottom="@drawable/ic_baseline_timer_24"
+        android:ems="10"
+        android:hint="Date"
+        android:inputType="date"
+        android:textColor="@color/purple_500"
+        android:textColorHint="#673AB7"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toEndOf="@+id/updatetitle"
+        app:layout_constraintTop_toBottomOf="@+id/view" />
 
     <EditText
         android:id="@+id/updatetitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="279dp"
+        android:layout_height="42dp"
         android:layout_marginTop="96dp"
         android:ems="10"
         android:hint="Title"
@@ -95,7 +115,6 @@
         app:layout_constraintHorizontal_bias="0.895"
         app:layout_constraintStart_toStartOf="parent"
         app:rippleColor="#FFFFFF" />
-
 
 
     <View

@@ -6,8 +6,10 @@ import android.content.Context;
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
+import androidx.room.TypeConverters;
 
-@Database(entities = Todo.class, version = 1,exportSchema = false)
+@Database(entities = Todo.class, version = 3,exportSchema = false)
+
 public abstract class TodoDatabase extends RoomDatabase {
 
     private static TodoDatabase instance;

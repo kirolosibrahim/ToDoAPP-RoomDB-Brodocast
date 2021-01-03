@@ -4,6 +4,8 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import java.util.Date;
+
 @Entity(tableName = "todo_table")
 public class Todo {
 
@@ -15,6 +17,12 @@ public class Todo {
 
     @ColumnInfo(name = "body")
     private String body;
+
+    @ColumnInfo(name = "Hours")
+    private int Hours;
+
+    @ColumnInfo(name = "Min")
+    private int Min;
 
 
     public int getId() {
@@ -41,5 +49,19 @@ public class Todo {
         this.body = body;
     }
 
+    public int getHours() {
+        return Hours;
+    }
 
+    public void setHours(int hours) {
+        Hours = hours;
+    }
+
+    public int getMin() {
+        return Min;
+    }
+
+    public void setMin(int min) {
+        Min = min;
+    }
 }
